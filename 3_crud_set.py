@@ -45,3 +45,20 @@ print(sorted(set_countries))
 set_countries.clear()
 print(set_countries)
 print(len(set_countries))
+
+# ejercicio
+
+countries = {"MX", "COL", "ARG", "USA"}
+northAm = {"USA", "CANADA"}
+centralAm = {"MX", "GT", "BZ"}
+southAm = {"COL", "BZ", "ARG"}
+
+new_set = set()
+
+new_set.update(southAm)
+new_set.update(northAm)
+new_set.update(centralAm)
+new_set.update(southAm)
+# Escribe tu solución 👇
+
+print(new_set)

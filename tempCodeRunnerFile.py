@@ -1,10 +1,11 @@
-new_numbers = []
+nombres = ['Maria', 'Chichen', 'Kukulkan', 'Erendira']
+edades = [6, 12, 24, 48]
 
-for i in range(1, 11):
-    if i % 2 == 0:
-        new_numbers.append(i * 2)
-    
-print(new_numbers)
+new_dict_v2 = { nombres[i]:edades[i] for i in range(len(nombres))}
+print(new_dict_v2)
 
-new_numbers_v1 = [i * 2 for i in range(1,21) if i % 2 == 0]
-print(new_numbers_v1)
+new_dict_v3 = dict(zip(nombres,edades))
+print(new_dict_v3)
+
+new_dict_v5 = { nombres: edades for (nombres, edades) in zip(nombres, edades)}
+print(new_dict_v5)
