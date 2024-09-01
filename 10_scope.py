@@ -63,6 +63,7 @@ print(f'esto es donde esta almacenado el price global {id(price)}')
 
 increment()
 
+# a
 
 
 
