@@ -1,18 +1,4 @@
-def message_creator(text):
-    # Escribe tu solución 👇
-    test = str(text)
-    answer = str
-    if test == 'computadora':
-       answer = 'Con mi computadora puedo programar usando Python'
-    elif test == 'celular':
-        answer = 'En mi celular puedo aprender usando la app de Platzi'
-    elif test == 'cable':
-        answer = '¡Hay un cable en mi bota!'
-    else:
-        answer = 'Artículo no encontrado'
-       
-    return answer
+full_name = lambda name, last_name: f'Full name es {name.title()} {last_name.title()}'
 
-text = 'computadora'
-response = message_creator(text)
-print(response)
+text = full_name('Rihanna', 'Velazquez')
+print(text)
