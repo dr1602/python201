@@ -34,8 +34,14 @@ print(prices)
 # new_items = list(map(lambda ))
 
 def add_taxes(item):
+    # aqui esta la referencia en momoria y hace que se modique el nuevo como el viejo
     item['taxes'] = item['price'] * .16
     return item
+
+def add_taxes(item):
+    new_item = item.copy()
+    new_item['taxes'] = new_item['price'] * .16
+    return new_item
 
 new_items = list(map(add_taxes, items))
 print(new_items)
@@ -50,3 +56,11 @@ print(items)
 # y no generando uno nuevo lo que puede generar problemas si no es lo que esperas
 # como solucionarias este problema?
 # como se peude hacer que el original se respete?
+
+
+# la modificacion es por la referencia en moemoria, por el espacio que tiene el diccionario
+# lo que pasa con las variable sprimitvas, lo uqe pasa con las vairables primitivas
+# se calcula un nuevo valor y ese valor es asignado al array
+# pero en diccionarios se asigna como una referencia en memoria, se hace modificacion para
+# tanto el nuevo como para el pasado array porque comparten la misma referencia en momoria
+
