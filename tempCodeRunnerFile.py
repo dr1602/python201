@@ -1,9 +1,8 @@
 
-increment_v2 = lambda x: x + 1
-high_order_function_v2 = lambda x, func: x + func(x)
+numbers_1 = [1, 2, 3, 4]
+numbers_2 = [5, 6, 7]
 
-result = high_order_function_v2(2, increment_v2)
-print(result)
-
-result = high_order_function_v2(3, lambda x: x * 2)
+print(numbers_1)
+print(numbers_2)
+result = list(map(lambda x, y: x + y, numbers_1, numbers_2))
 print(result)
