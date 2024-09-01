@@ -1,16 +1,16 @@
-def find_volume2(length = 1, width=1, depth = 1):
-    return length * width * depth, width, 'hola'
+price = 100 # alcance global
+result = 200
 
-result = find_volume2(width=10)
-# nos devuelve una tupla con los valores
-'''
-(10, 10, 'hola')
-'''
-print(result[0])
+def increment():
+    price = 200
+    # aqui estas una nueva variable dentro del contexto que se llama price 
+    price = price + 10
+    # pero ahora price tiene un contexto local
+    print(price)
+    return price
+    
 
-# tambien se puede asignar una respuesta con comas al guardar en variable
-
-result_2, width, texto = find_volume2(width=10)
-print(result_2)
-print(width)
-print(texto)
+print(price)
+price_2 = increment()
+print(price_2)
+print(result)
