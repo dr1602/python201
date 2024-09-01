@@ -1,18 +1,16 @@
-## las funcoines reciben parametros y deberian retornar la respuesata de la suma
-# para poder usarlo
+def find_volume2(length = 1, width=1, depth = 1):
+    return length * width * depth, width, 'hola'
 
-def sum_with_range(min, max):
-    print(min, max)
-    
-    sum = 0
-    for  x in range(min, max):
-        sum += x
-    
-    return sum    
+result = find_volume2(width=10)
+# nos devuelve una tupla con los valores
+'''
+(10, 10, 'hola')
+'''
+print(result[0])
 
-# asignamos el valor del resultado a una variable y por eso depsues lo podimos imprimir
-result = sum_with_range(1, 10)
-print(result)
+# tambien se puede asignar una respuesta con comas al guardar en variable
 
-result_2= sum_with_range(result, result + 10)
+result_2, width, texto = find_volume2(width=10)
 print(result_2)
+print(width)
+print(texto)
