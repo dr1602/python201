@@ -4,7 +4,7 @@
 # podriamos empezar a importar de la siguiente manera las funciones y sus modulos
 
 from package.mod_1 import func_1, func_2
-import package.mod_1
+# import package.mod_1
 from package.mod_2 import func_3, func_4
 
 print(func_1())

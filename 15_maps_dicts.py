@@ -1,4 +1,4 @@
-# podemos hacer transformaciones no convencionales, como pasar de comida a carros
+    # podemos hacer transformaciones no convencionales, como pasar de comida a carros
 # cambiando el tipo de datos
 
 items = (
