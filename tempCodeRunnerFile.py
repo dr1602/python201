@@ -1,16 +1,6 @@
-#  reduce algo a un solo valor, toma una lista y saca una conclusion de una lista
-import functools
+# para manejar listas
+import collections
 
-numbers = [1, 2, 4, 8]
-
-def accum(counter, item):
-    print('counter =>', counter)
-    print('item =>', item)
-    return counter + item
-
-result = functools.reduce(lambda counter, item: counter + item, numbers)
-
-result_v2 = functools.reduce(accum, numbers)
-
-print(result)
-print(result_v2)
+numbers = [1, 2, 1, 2, 2, 1, 5, 7, 7, 8, 9, 5, 6, 13, 15, 21]
+counter = collections.Counter(numbers)
+print(counter)
