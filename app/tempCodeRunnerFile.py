@@ -1,40 +1,19 @@
-# como podemos empezar a llmar otros modulos en python usamos la palbra clave import
-import utils
-# al importarlo podemos empzar a ejecutarlo
 
-keys, values = utils.get_population()
+import main
 
-print(keys, values)
-# ['col', 'bol', 'per', 'mex'] [300, 400, 500, 1000]
+# main.run()
 
-# print(utils.A)
-# hola
+# con esto ya controlamos la ejecucion del archivo, no se ejecuta por solo ejecutarlo
+# explictamente tenemos que ejecutar la funcion run
+# pero si tuvieramos una variable, como la variable dat, fuera del scop de la funcion
 
-# se actualizo automaticamente el nombre de los archivos
+# aqui en example podemos imprimir main.data
+# no solo por importar va a ejcuttar el archivo, solo deberia imprimir data.
 
-data = [
-    {
-        'Country': 'col',
-        'Population': 300
-    },
-    {
-        'Country': 'bol',
-        'Population': 300
-    },
-    {
-        'Country': 'arg',
-        'Population': 400
-    }
-]
+print(main.data)
 
-reusult = utils.population_by_country(data, 'col')
-print(reusult)
+'''
+[{'Country': 'col', 'Population': 300}, {'Country': 'bol', 'Population': 300}, {'Country': 'arg', 'Population': 400}]
+'''
 
-# [{'Country': 'col', 'Population': 300}]
-
-# ahora lo haremos de forma dinamica en lugar de solo poner colombia
-
-country = input('Ingrese el nombre del pais del que quiere conocer su poblacion:')
-result_v2 = utils.population_by_country(data, country)
-
-print(result_v2)
+main.run()
