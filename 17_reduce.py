@@ -14,3 +14,4 @@ result_v2 = functools.reduce(accum, numbers)
 
 print(result)
 print(result_v2)
+
