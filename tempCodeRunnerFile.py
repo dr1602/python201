@@ -1,10 +1,15 @@
-try:
-    print(0/0)
-    assert 1 != 1, 'Uno es igual que uno'
-    age = 10
-    if age < 18:
-        raise Exception('No se permiten menores de edad')
-except ZeroDivisionError or AssertionError or Exception as error:
-    print(error)
+def my_divide(a, b):
+    # Escribe tu solución 👇
+    result = 0
+    try:
+        result = a / b
+    except ZeroDivisionError or AssertionError:
+       result = print('No se puede dividir por 0')
 
-print('hola nuevamente')
+    return result
+    
+response = my_divide(10, 2)
+print(response) # 5
+
+response = my_divide(10, 0)
+print(response) # No se puede dividir por 0
