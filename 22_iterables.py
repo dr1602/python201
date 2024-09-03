@@ -1,3 +1,16 @@
+# hay iterables que se pueden controla manualmente desde el codigo, y no siendo necesariamente un ciclo
+
+# iteracion sencilla
+for i in range(1, 10):
+    print(i)
+
+# que es un range?
+
+my_iter = range(1, 11)
+print(my_iter)
+# la impresion aqui es range, no se puede iterar, es el for lo que lo hace iterable
+
+# para poderlo manejar manualmente y no por defecto como el for, usariamos la siguiente sintaxis
 my_iter = iter(range(1, 5))
 print(my_iter)
 '''
@@ -43,3 +56,12 @@ una excepcion
 
 print(next(my_iter))
 print(next(my_iter))
+
+'''
+Traceback (most recent call last):
+  File "/root/Python201/tempCodeRunnerFile.py", line 44, in <module>
+    print(next(my_iter))
+StopIteration
+
+hay que tomar en cuenta hasta cuando iterar sino se lanzara esa excepcion
+'''
