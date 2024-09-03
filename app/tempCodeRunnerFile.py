@@ -1,19 +1,29 @@
 
-import main
+import csv
 
-# main.run()
+path = './app/data.csv'
 
-# con esto ya controlamos la ejecucion del archivo, no se ejecuta por solo ejecutarlo
-# explictamente tenemos que ejecutar la funcion run
-# pero si tuvieramos una variable, como la variable dat, fuera del scop de la funcion
+def read_csv(path):
+    with open(path,'r') as csvfile:
+        # reder es un iterable
+        reader = csv.reader(csvfile, delimiter=',')
+        #la primer fila es el nombre de las columnas
+        header = next(reader)
+        
+        # para generar un nuevo diccionario que se guarde, seria con
+        data = []
+        for row in reader:
+            # los unira en un array de tuplas
+            iterable = zip(header, row)
+            # print(list(iterable))
+            # generaremos un diccionario a partir del iterable
+            country_dict = {key: value for key, value in iterable}
+            data.append(country_dict)
+            # print(country_dict)
+            # print('***' * 9)
+            # print(row)
+        return data
 
-# aqui en example podemos imprimir main.data
-# no solo por importar va a ejcuttar el archivo, solo deberia imprimir data.
-
-print(main.data)
-
-'''
-[{'Country': 'col', 'Population': 300}, {'Country': 'bol', 'Population': 300}, {'Country': 'arg', 'Population': 400}]
-'''
-
-main.run()
+if __name__ == '__main__':
+    data = read_csv(path)
+    print(data[3])
