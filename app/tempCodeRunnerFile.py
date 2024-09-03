@@ -1,20 +1,19 @@
-# funcion para leer csv
+import matplotlib.pyplot as plt
 
-import csv
-
-path = './app/data.csv'
-
-def read_csv(path):
-    with open(path,'r') as csvfile:
-        # delimiter es la forma e la que los datos estan seprados como , pero a veces puede ser con ;
-        reader = csv.reader(csvfile, delimiter=',')
-        for row in reader:
-            print('***' * 9)
-            print(row)
-            # ejeceutar archivo como script en terminal
-            
-# read_csv(path)
-            
-if __name__ == '__main__':
-    read_csv(path)
+'''
+def generate_bar_char(labels, values):    
+    fig, ax = plt.subplots()
+    ax.bar(labels, values)
+    plt.show()
+'''
     
+def generate_pie_chart(labes, values):
+    fig, ax = plt.subplots()
+    ax.pie(values, labels=labels)
+    ax.axis('equal')
+    plt.show()
+
+if __name__ == '__main__':
+    labels = ['a', 'b', 'c']
+    values = [100, 200, 80]
+    generate_pie_chart(labels, values)
