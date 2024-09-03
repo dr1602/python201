@@ -1,6 +1,15 @@
-with open('./text.py', 'w+') as file:
-    for line in file:
-        print(line)
-    # literalmente escribe al final del ultimo teto pero no crea una nueva linea
-    # para generar nuevas lineas tenemos que hacer esto
-    file.write("print('Hola Mundo')\n")
+import csv
+
+def read_csv(path):
+    # Tu código aquí 👇
+    total = 0
+    
+    with open(path, 'r') as csvfile:
+       lines = csv.reader(csvfile, delimiter=',')
+       for row in lines:
+           total += int(row[1])     
+    
+    return total
+
+response = read_csv('./data.csv')
+print(response)
