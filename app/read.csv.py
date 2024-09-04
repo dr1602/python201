@@ -69,4 +69,4 @@ def read_csv(path):
 
 if __name__ == '__main__':
     data = read_csv(path)
-    print(data[3])
+    print(data[0:3])
