@@ -1,15 +1,17 @@
-import matplotlib.pyplot as plt
+import utils
+import read_csv
+import charts
 
-# %%
-def generate_bar_char():
-    labels = ['a', 'b', 'c']
-    values = [100, 200, 80]
+def run():
+    data = read_csv.read_csv('./app/data.csv')
+    country = input('Type Country => ')
     
-    fig, ax = plt.subplots()
-    ax.bar(labels, values)
+    result = utils.population_by_country(data, country)
     
-    plt.show()
-
-# %%
+    if len(result) > 0:  
+        country = result[0]
+        keys, values = utils.get_population(country)
+        charts.generate_bar_char(keys, values)
+        
 if __name__ == '__main__':
-    generate_bar_char()
+    run()
