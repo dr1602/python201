@@ -1,146 +1,44 @@
-"""
-Este script permite al usuario seleccionar una columna de datos de población o área de un archivo CSV 
-y generar un gráfico de torta o de barras basado en la selección. 
+# empezaremos la lista con los corchetes cuadrados, primero la estructura sera
+# [element for element in iterable]
 
-Requisitos:
-- Python 3.x instalado
-- Las bibliotecas `inquirer`, `matplotlib` y `csv` deben estar instaladas.
+# forma clasica
+numbers = []
 
-Para instalar las dependencias necesarias, ejecuta en tu terminal:
-    pip install inquirer matplotlib
+for element in range(1, 11):
+    numbers.append(element * 2)
+    
+print(numbers)
+'''
+[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+'''
 
-Uso:
-- Ejecuta el script en un entorno de Python compatible.
-- Sigue las indicaciones en la terminal para seleccionar la columna de datos y la región que deseas graficar.
+# forma simiplificada
+# sintaxis mas corta, y facil de leer
+numbers_v1 = [element for element in range(1,21)]
+print(numbers_v1)
+'''
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+'''
 
-Autor: [Tu Nombre]
-Fecha: [Fecha]
-"""
+# otra forma de trabajar con la version simplificada
+numbers_v2 = [element * 2 for element in range(1,21)]
+print(numbers_v2)
+'''
+[2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]
+'''
 
-# Importaciones necesarias
-import inquirer
-import csv
-import matplotlib.pyplot as plt
+# nueva forma de la sitnaxis para agregar condiciones
+# [element for element in iterable if condicion]
 
-# Ruta al archivo CSV con los datos
-path = './app/data.csv'
+# [i*2 for i in rnage(1, 101) if i % 2 == 0]
 
-def menu_options():
-    """
-    Muestra un menú con las opciones de columnas de datos disponibles para graficar.
+new_numbers = []
 
-    Returns:
-        str: La columna seleccionada por el usuario.
-    """
-    questions = [
-        inquirer.List('column',
-                      message="¿Qué columna deseas graficar?",
-                      choices=[
-                          '2022 Population',
-                          '2020 Population',
-                          '2015 Population',
-                          '2010 Population',
-                          '2000 Population',
-                          '1990 Population',
-                          '1980 Population',
-                          '1970 Population',
-                          'Area (km²)',
-                          'Density (per km²)',
-                          'Growth Rate',
-                          'World Population Percentage',
-                      ],
-        ),
-    ]
-    options = inquirer.prompt(questions)
-    choice = options["column"]
+for i in range(1, 11):
+    if i % 2 == 0:
+        new_numbers.append(i * 2)
+    
+print(new_numbers)
 
-    return choice
-
-def menu_regions():
-    """
-    Muestra un menú con las opciones de regiones disponibles para graficar.
-
-    Returns:
-        str: La región seleccionada por el usuario.
-    """
-    questions = [
-        inquirer.List('column',
-                      message="¿Qué región deseas graficar?",
-                      choices=[
-                          'Asia',
-                          'Europe',
-                          'Africa',
-                          'Oceania',
-                          'North America',
-                          'South America',
-                      ],
-        ),
-    ]
-    options = inquirer.prompt(questions)
-    regions = options["column"]
-
-    return regions
-
-def country_historical_population(path):
-    """
-    Genera un gráfico basado en la selección de columna y región del usuario.
-
-    Args:
-        path (str): Ruta al archivo CSV que contiene los datos.
-
-    Returns:
-        dict: Diccionario con los datos ordenados.
-    """
-    choice = menu_options()
-    region = menu_regions()
-
-    with open(path, 'r') as csvfile:
-        reader = csv.reader(csvfile, delimiter=',')
-        header = next(reader)
-
-        countries = []
-        data = []
-        
-        for row in reader:
-            iterable = zip(header, row)
-            country_dict = {key: value for key, value in iterable}
-            if country_dict['Continent'] == region:
-                countries.append(country_dict['Country/Territory'])
-                try:
-                    if choice in ['Growth Rate', 'World Population Percentage', 'Density (per km²)']:
-                        data.append(float(country_dict[choice]))
-                    else:
-                        data.append(int(country_dict[choice]))
-                except ValueError:
-                    print(f"Error al convertir el valor: {country_dict[choice]} de la columna {choice}")
-                    break
-        
-        try:
-            if choice in ['Growth Rate', 'World Population Percentage', 'Density (per km²)']:
-                # Preparar datos para gráfico de torta
-                final_data = {countries[i]: data[i] for i in range(len(data))}
-                sorted_data = dict(sorted(final_data.items(), key=lambda item: item[1], reverse=True))
-                
-                # Crear gráfico de torta
-                fig, ax = plt.subplots()
-                ax.pie(sorted_data.values(), labels=sorted_data.keys(), autopct='%1.1f%%', startangle=90)
-                ax.axis('equal')  # Asegurar que el gráfico de torta sea un círculo perfecto
-                
-                plt.show()
-            else:
-                # Preparar datos para gráfico de barras
-                final_data = {countries[i]: data[i] for i in range(len(data))}
-                sorted_data = dict(sorted(final_data.items(), key=lambda item: item[1], reverse=True))
-                
-                # Crear gráfico de barras
-                fig, ax = plt.subplots()
-                ax.bar(sorted_data.keys(), sorted_data.values())
-                
-                plt.show()
-        except Exception as e:
-            print(f'Error al generar el gráfico: {e}')
-        
-        return sorted_data
-
-# Ejecutar la función principal
-country_historical_population(path)
+new_numbers_v1 = [i * 2 for i in range(1,21) if i % 2 == 0]
+print(new_numbers_v1)
